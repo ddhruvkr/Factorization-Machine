@@ -1,0 +1,73 @@
+1M dataset
+
+No of movies = 4000, no of users = 6000, 1M ratings
+
+No of movies for which we have abstracts = 3274, Actors = 3274
+Movies for which we have genre=2795
+Union of movies for which we have both actor and genre info = 2795
+Ratings with this reduced data = 872729
+
+From movies 1M dataset:
+
+'Animation': 105, "Children's": 251, 'Comedy': 1200, 'Adventure': 283, 'Fantasy': 68, 'Romance': 471, 'Drama': 1603, 'Action': 503, 'Crime': 211, 'Thriller': 492, 'Horror': 343, 'Sci-Fi': 276, 'Documentary': 127, 'War': 143, 'Musical': 114, 'Mystery': 106, 'Film-Noir': 44, 'Western': 68
+
+
+From abstract
+we have genres for 2795 movies
+'action': 315, '': 2795, 'fiction': 354, 'horror': 289, 'war': 209, 'award': 654, 'crime': 190, 'drama': 770, 'fantasi': 136, 'adventur': 177, 'children': 76, 'comedi': 983, 'anim': 177, 'western': 74, 'noir': 66, 'thriller': 273, 'mysteri': 97, 'sport': 39, 'romanc': 63, 'documentari': 89, 'famili': 208, 'histori': 64, 'biographi': 12, 'imax': 11
+
+
+Results:
+
+Vanilla SGD LessData
+Learn Rate		Regular			Dimension	SDE		RMSE
+0.0025			0.03,0.03,0.04	1,10,20		0.001	.8393, .8415, .8455, .8424, .8405	.8418
+Vanilla ALS LessData
+0.003			0.01,0.01,0.07	1,1,5				.8634, .8649, .8695, .8654, .8645
+Vanilla MCMC LessData
+								1,5,30		0.1		.8352, .8369,.8405, .8373, .836
+
+
+GenreApporach0 SGD LessData
+0.0020		0.0001,0.0001,0.07		1,10,20	  0.001	 .8201,.8213,.8261,.8215, .8204		.8219	300 iterations, still did not completely converge
+GenreApporach0 ALS LessData
+0.003		0.1,0.1,0.05			1,1,3	  0.001  .8396,.8399,.8432,.8405,.8391
+GenreApproach0 MCMC LessData
+									1,5,30	  0.0001 .8117,.8137,.8187,.8140,.8118
+
+GenreApproach1 SGD LessData
+0.0030      0.0001,0001,0.05    1,5,25   	   0.0001 .8309, 0.8324, .8368, .8328, .8324       .833  
+GenreApproach1 ALS LessData
+0.003		0.03,0.03,0.07		1,3,3		   0.01  .8548, .8567, .8601, .8571, .8546
+GenreApproach1 MCMC LessData
+							1,5,30		0.1    .8242, .8261, .8300, .8263, .8252			
+
+ActorApproach0 SGD LessData
+0.0020		0.0005,0.0005,0.05 		1,5,25	  0.0005	.8304,.8312,.8355,.8321,.8317
+ActorApproach0 ALS LessData
+0.003		0.5,0.5,0.07		1,1,3		0.0001		.8514,.8525,.8560,.8546,.8521 
+ActorApproach0 MCMC LessData
+							1,5,25			  0.1	 .8220,.8241,.8267,.8242,.8231	 
+
+
+ActorApproach1 SGD LessData
+0.0025		0.0005,0.0005,0.04 		1,5,25	  0.0001	.8345,.8354,.8393,.8362,.8352
+ActorApproach1 ALS LessData
+0.003		0.5,0.5,0.07		1,1,3		0.0001		.8563,.8577,.8627,.8584,.8560
+ActorApproach1 MCMC LessData
+							1,5,25			  0.1	 .8277,.8287,.8332,.8302,.8291	
+
+GenreActorApporach0 SGD LessData
+0.0020		0.0001,0.0001,0.05		1,5,20	  0.0001	 .8074,.8082,.8136,.8088, .8094		.8219	
+GenreActorApporach0 ALS LessData
+0.003		0.5,0.5,0.07		1,1,3		0.001		.8168,.8188,.8223,.8186,.8189 		was still going on
+GenreActorApproach0 MCMC LessData
+									1,5,30	  0.005 .7949,.7975,.8017,.7982,.796		
+
+
+GenreActorApporach1 SGD LessData
+0.0020		0.0001,0.0001,0.04		1,5,20	  0.0001	 .8229,.8244,.8286,.8249, .8245		
+GenreActorApporach1 ALS LessData
+0.003		0.5,0.5,0.07		1,1,3		0.0001		.8437,.8447,.8583,.8460,.8448 		was still going on
+GenreActorApproach1 MCMC LessData
+									1,5,30	  0.1 .8173,.8191,.8225,.8196,.8184	
